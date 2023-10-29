@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family: 'Montserrat', sans-serif;
+            margin: 20px;
+        }
+        h1{
+            text-align: center;
+            color: #f8879b;
+        }
+        #inTask{
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #addButton {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #addButton:hover {
+            background-color: #45a049;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+        li:hover {
+            background-color: #f2f2f2;
+        }
+        .completed{
+            text-decoration: line-through;
+            color: #f8879b;
+        } 
+    </style>
+</head>
+<body>
+    <h1>To do List</h1>
+    <input type="text" id="inTask" placeholder="Digite aqui sua tarefa s2">
+    <button id="addButton" onclick="addTask()">Adicionar tarefa</button>
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask(){
+            const taskInput = document.getElementById("inTask")
+            const taskList = document.getElementById("taskList")
+
+            const newTask = document.createElement("li")
+            newTask.innerText = taskInput.value
+            newTask.addEventListener("click", function(){ // adiciona o evento de click para marcar como concluída 
+                this.classList.toggle("completed")
+            })
+            taskList.appendChild(newTask)
+            taskInput.value = "" // limpa o input para marcar como concluída 
+        }
+    </script>
+</body>
+</html>
